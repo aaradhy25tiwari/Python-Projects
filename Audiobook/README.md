@@ -3,20 +3,6 @@
 + Python 3.10 and above
 + pyttsx3 library for text-to-speech functionality
 + PyPDF2 library for PDF parsing
-
-### Instructions
-    Text to Speech Program using PyTTSX3 and PyPDF2
-    ==============================================
-
-    This program reads a PDF file and converts its text to speech using the PyTTSX3 library.
-
-    Usage
-    -----
-
-    1. Replace `'Tutorial.pdf'` with the path to your PDF file.
-    2. Make sure the PDF file is in the same directory as this script.
-    3. Run the script.
-    4. The program will read the PDF file and convert its text to speech.
     
 ## PyPDF Installation :
     pip install PyPDF2
