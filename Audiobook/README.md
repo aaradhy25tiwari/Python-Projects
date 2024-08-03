@@ -2,10 +2,10 @@
 ## Requirements for this project are:
 + Python 3.10 and above
 + pyttsx3 library for text-to-speech functionality
-+ PyPDF2 library for PDF parsing
++ pypdf library for PDF parsing
 
 ### Instructions
-    Text to Speech Program using PyTTSX3 and PyPDF2
+    Text to Speech Program using PyTTSX3 and pypdf
     ==============================================
 
     This program reads a PDF file and converts its text to speech using the PyTTSX3 library.
@@ -19,7 +19,7 @@
     4. The program will read the PDF file and convert its text to speech.
     
 ## PyPDF Installation :
-    pip install PyPDF2
+    pip install pypdf
 
 ## pyttsx3 Installation :
 
