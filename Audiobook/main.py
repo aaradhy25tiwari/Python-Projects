@@ -1,22 +1,26 @@
 """This is a python Program performing Text To Speech by Aaradhy"""
 import pyttsx3 #import the pyttsx3 library
-import PyPDF2
+import pypdf
 
-book = open('Tutorial.pdf', 'rb') 
+book = open('C:/Users/aarad/OneDrive/Desktop/Python/Python-Projects/Audiobook/Tutorial.pdf', 'rb')
 #Here Tutorial.pdf should be replaced with the book or PDF you want to read.
 # Also you need to add that file in the folder
 
-pdfreader = PyPDF2.PdfFileReader(book)
+pdfreader = pypdf.PdfReader(book)
 
-pages = pdfreader.numPages # This tells us the total number of pages.
+pages = len(pdfreader.pages)  # This tells us the total number of pages.
 
 speaker = pyttsx3.init() #initialize the import
+
+voices = speaker.getProperty('voices')       #getting details of current voice
+#speaker.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
+speaker.setProperty('voice', voices[1].id)   #changing index, changes voices. 1 for female
 
 #Here 8 is replaced by page number from which reading should start.
 #Page index starts from 0, so 8 means page number 9
 for num in range (8, pages):
-    page = pdfreader.getPage(num)
-    text = page.extractText()
+    page = pdfreader.pages[num]
+    text = page.extract_text()
     speaker.say(text)
     speaker.runAndWait()
 
