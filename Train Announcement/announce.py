@@ -1,10 +1,9 @@
+"""This is a python Program that makes train announcement"""
 import datetime
-import smtplib
-import webbrowser
 from tkinter import *
 
 import pyttsx3  # pip install pyttsx3
-import speech_recognition as sr  # pip install speechRecognition
+#import speech_recognition as sr  # pip install speechRecognition
 
 root = Tk()
 root.geometry("655x335")
@@ -25,14 +24,14 @@ def wishMe():
         speak("Good Morning!")
 
     elif hour>=12 and hour<18:
-        speak("Good Afternoon!")   
+        speak("Good Afternoon!")
 
     else:
-        speak("Good Evening!") 
+        speak("Good Evening!")
  
 def announce():
     wishMe()
-    speak("Attention Ladies and Gentlemen, Train number") 
+    speak("Attention Ladies and Gentlemen, Train number")
     speak((trainnovalue).get())
     speak(trainnamevalue.get())
     speak("arriving from")
