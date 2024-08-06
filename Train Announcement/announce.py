@@ -1,6 +1,6 @@
 """This is a python Program that makes train announcement"""
 import datetime
-from tkinter import *
+from tkinter import Label, Tk, StringVar, Entry, Button
 
 import pyttsx3  # pip install pyttsx3
 #import speech_recognition as sr  # pip install speechRecognition
