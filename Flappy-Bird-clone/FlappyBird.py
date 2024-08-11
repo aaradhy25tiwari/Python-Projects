@@ -31,7 +31,7 @@ def welcomeScreen():
     while True:
         for event in pygame.event.get():
             # if user clicks on cross button, close the game
-            if event.type == pygame.QUIT or (event.type==pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+            if (event.type == pygame.QUIT) or (event.type==pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
 
