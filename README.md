@@ -12,4 +12,5 @@ I have used Python 3 for this repositoty. The module that are needed for this pr
 git clone https://github.com/aaradhy25tiwari/Python-Projects.git
 ```
 <br>
+
 ## Happy Coding! 🖥️
