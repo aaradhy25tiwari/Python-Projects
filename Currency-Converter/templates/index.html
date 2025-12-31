@@ -21,15 +21,23 @@
       <form method="post" class="row g-3 mb-4">
         <div class="col-md-3">
           <label for="base" class="form-label">Base Currency</label>
-          <input id="base" name="base" class="form-control" placeholder="USD" required>
+          <select id="base" name="base" class="form-select" required>
+            {% for code, name in currencies %}
+              <option value="{{ code }}" {% if base_value == code %}selected{% endif %}>{{ code }} — {{ name }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div class="col-md-3">
           <label for="target" class="form-label">Target Currency</label>
-          <input id="target" name="target" class="form-control" placeholder="EUR" required>
+          <select id="target" name="target" class="form-select" required>
+            {% for code, name in currencies %}
+              <option value="{{ code }}" {% if target_value == code %}selected{% endif %}>{{ code }} — {{ name }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div class="col-md-3">
           <label for="amount" class="form-label">Amount</label>
-          <input id="amount" name="amount" class="form-control" placeholder="100" required>
+          <input id="amount" name="amount" class="form-control" placeholder="100" required value="{{ amount_value }}">
         </div>
         <div class="col-md-3 align-self-end">
           <button type="submit" class="btn btn-primary w-100">Convert</button>
