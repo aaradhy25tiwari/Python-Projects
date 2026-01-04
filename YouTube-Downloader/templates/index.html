@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouTube Downloader</title>
+    <style>
+      body { font-family: Arial, sans-serif; max-width: 720px; margin: 2rem auto; }
+      input[type=text] { width: 100%; padding: 8px; }
+      .files { margin-top: 1rem; }
+      .flash { padding: 8px; background: #f0f0f0; border-radius: 4px; margin-bottom: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>YouTube Downloader</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+      <label for="url">YouTube URL</label>
+      <input type="text" id="url" name="url" placeholder="https://www.youtube.com/watch?v=...">
+      <button type="submit">Download</button>
+    </form>
+
+    <div class="files">
+      <h2>Downloaded files</h2>
+      {% if files %}
+        <ul>
+          {% for f in files %}
+            <li><a href="{{ url_for('files', filename=f) }}">{{ f }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No files yet.</p>
+      {% endif %}
+    </div>
+
+    <footer>
+      <p style="font-size:0.9rem;color:#666">Run with <code>python app.py</code> or use Flask's runner.</p>
+    </footer>
+  </body>
+</html>

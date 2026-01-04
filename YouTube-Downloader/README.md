@@ -26,3 +26,12 @@
 
         cd Python-Projects/YouTube-Downloader
 
+2. Install dependencies:
+
+       pip install -r requirements.txt
+
+3. Run the web UI:
+
+        cd YouTube-Downloader
+        python app.py
+        Open http://127.0.0.1:5000 in your browser
