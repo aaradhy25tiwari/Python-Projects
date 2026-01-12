@@ -12,15 +12,19 @@ This Repository Includes:
 
 2. **Currency-Converter**: A simple program for converting currencies
 
-3. **Flappy-Bird_clone**
+3. **Flappy-Bird-clone**
 
-4. **News-Automation**: Extracts News based on selected category
+4. **Hangman-Game**: A simple word guessing game
 
-5. **Snakes**: The snakes game clone
+5. **News-Automation**: Extracts News based on selected category
 
-6. **Train-Announcement**: A system for annoncing details
+6. **QR-Code-Generator**: generates QR code of the given Link
 
-7. **YouTube-Downloader**: Program to download youtube videos
+7. **Snakes**: The snakes game clone
+
+8. **Train-Announcement**: A system for annoncing details
+
+9. **YouTube-Downloader**: Program to download youtube videos
 
 <br>
 - Download or clone the repository
