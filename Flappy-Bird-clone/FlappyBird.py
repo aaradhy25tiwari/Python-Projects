@@ -47,6 +47,9 @@ def welcomeScreen():
                 FPSCLOCK.tick(FPS)
 
 def mainGame():
+    """
+    Logic for main Game
+    """
     score = 0
     playerx = int(SCREENWIDTH/5)
     playery = int(SCREENWIDTH/2)
@@ -127,7 +130,7 @@ def mainGame():
         if upperPipes[0]['x'] < -GAME_SPRITES['pipe'][0].get_width():
             upperPipes.pop(0)
             lowerPipes.pop(0)
-        
+
         # Lets blit our sprites now
         SCREEN.blit(GAME_SPRITES['background'], (0, 0))
         for upperPipe, lowerPipe in zip(upperPipes, lowerPipes):
@@ -148,18 +151,10 @@ def mainGame():
         pygame.display.update()
         FPSCLOCK.tick(FPS)
 
-def pattern(size):
-    alpha=64
-    for i in range(size-1,-1,-1):
-        for j in range(i):
-            print("__",end="")
-        for k in range(size-1,i,-1):
-            print(chr(alpha+k),end="_")
-        print()
-    
-pattern(3)
-
 def isCollide(playerx, playery, upperPipes, lowerPipes):
+    """
+    Returns true if the player collides with base or pipes
+    """
     if playery> GROUNDY - 25  or playery<0:
         GAME_SOUNDS['hit'].play()
         return True
