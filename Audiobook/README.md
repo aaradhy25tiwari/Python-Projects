@@ -83,3 +83,46 @@ engine.runAndWait()
 ### **Full documentation of the Library**
 
 https://pyttsx3.readthedocs.io/en/latest/
+
+## Setup
+
+1. Clone the repo and change directory:
+
+```bash
+git clone https://github.com/aaradhy25tiwari/Python-Projects.git
+cd Python-Projects/Audiobook
+```
+
+2. (Optional) Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+# Windows
+.\.venv\Scripts\activate
+# macOS / Linux
+source .venv/bin/activate
+```
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Contributing
+
+Contributions are welcome — feel free to open issues or submit pull requests to:
+- improve the UI
+- add caching for API responses
+- add automated tests
+
+Please follow the usual fork → branch → PR workflow.
+
+---
+
+## Author
+
+Created by aaradhy25tiwari. For questions or suggestions, open an issue in the repository.
+
+## Happy Coding! 🖥️
+
