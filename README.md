@@ -10,21 +10,23 @@ This Repository Includes:
 
 1. **Audiobook**: APDF Reader
 
-2. **Currency-Converter**: A simple program for converting currencies
+2. **Budget-Tracker**
 
-3. **Flappy-Bird-clone**
+3. **Currency-Converter**: A simple program for converting currencies
 
-4. **Hangman-Game**: A simple word guessing game
+4. **Flappy-Bird-clone**
 
-5. **News-Automation**: Extracts News based on selected category
+5. **Hangman-Game**: A simple word guessing game
 
-6. **QR-Code-Generator**: generates QR code of the given Link
+6. **News-Automation**: Extracts News based on selected category
 
-7. **Snakes**: The snakes game clone
+7. **QR-Code-Generator**: generates QR code of the given Link
 
-8. **Train-Announcement**: A system for annoncing details
+8. **Snakes**: The snakes game clone
 
-9. **YouTube-Downloader**: Program to download youtube videos
+9. **Train-Announcement**: A system for annoncing details
+
+10. **YouTube-Downloader**: Program to download youtube videos
 
 <br>
 - Download or clone the repository
