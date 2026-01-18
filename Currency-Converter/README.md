@@ -101,7 +101,7 @@ Enter amount to convert: 100
 
 ---
 
-## Examples & Notes 💡
+## Examples & Notes
 
 - The Flask UI shows the rate and converted amount and prints helpful flash messages for errors (missing fields, non-numeric amounts, or API issues).
 - API responses may change; the code reads the `data` field from the Free Currency API and expects the API response to include the requested `target` currency key.
