@@ -1,10 +1,10 @@
-# Currency Converter (Python) 💱
+# Currency Converter (Python)
 
 A small utility to convert currencies using the Free Currency API. Includes a CLI helper (`main.py`) and a simple Flask web UI (`app.py`).
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 - Python 3.10+
 - A Free Currency API key (get one at https://freecurrencyapi.com/)
@@ -31,7 +31,7 @@ Currency-Converter/
 
 ---
 
-## 🔧 Setup
+## Setup
 
 1. Clone the repo and change directory:
 
@@ -66,7 +66,7 @@ FLASK_SECRET="a-secret-key"
 
 ---
 
-## ▶️ Usage
+## Usage
 
 ### Web UI (recommended)
 
@@ -108,7 +108,7 @@ Enter amount to convert: 100
 
 ---
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 - Missing API key error: ensure `.env` contains `API_KEY` and restart the app.
 - Invalid API key / limit reached: check your Free Currency API dashboard and ensure your key is valid and within rate limits.
@@ -117,7 +117,7 @@ Enter amount to convert: 100
 
 ---
 
-## ✅ Testing & Quick Checks
+## Testing & Quick Checks
 
 - Syntax check: `python -m py_compile app.py main.py`
 - Run linting or unit tests if you add them later.
@@ -132,12 +132,6 @@ Contributions are welcome — feel free to open issues or submit pull requests t
 - add automated tests
 
 Please follow the usual fork → branch → PR workflow.
-
----
-
-## License
-
-This project is provided as-is. Add a license (e.g., MIT) if you want to allow reuse.
 
 ---
 
