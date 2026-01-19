@@ -9,11 +9,10 @@ window.minsize(600,500)
 window.maxsize(600,500)
 
 def translate():
-
+    """Translate text from source to target language."""
     global language
     try:
         txt = text1.get(1.0, END).strip()
-        c1 = combo1.get()
         c2 = combo2.get()
         if txt:
             lan_ = language.get(c2)
@@ -31,7 +30,7 @@ def translate():
 
 language = GoogleTranslator().get_supported_languages(as_dict=True)
 lang_value = list(language.keys())
-    
+
 combo1=ttk.Combobox(window,values=lang_value,state='r')
 combo1.place(x=100,y=20)
 combo1.set("choose a language")
