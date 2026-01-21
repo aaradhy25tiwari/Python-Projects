@@ -2,6 +2,7 @@
 from tkinter import Tk, Text, Frame, Button, END, GROOVE, WORD
 from tkinter import ttk, messagebox
 from deep_translator import GoogleTranslator
+from deep_translator.exceptions import TranslationNotFound, ServerException
 
 window = Tk()
 window.title("DataFlair Language Translator")
@@ -10,7 +11,6 @@ window.maxsize(600,500)
 
 def translate():
     """Translate text from source to target language."""
-    global language
     try:
         txt = text1.get(1.0, END).strip()
         c2 = combo2.get()
@@ -23,7 +23,7 @@ def translate():
             result = translator.translate(txt)
             text2.delete(1.0, END)
             text2.insert(END, result)
-    except Exception as e:
+    except (TranslationNotFound, ServerException) as e:
         messagebox.showerror("Error", f"Translation failed: {str(e)}")
 
 
