@@ -26,7 +26,9 @@ This Repository Includes:
 
 9. **Train-Announcement**: A system for annoncing details
 
-10. **YouTube-Downloader**: Program to download youtube videos
+10. **Translator**: Simple translation program
+
+11. **YouTube-Downloader**: Program to download youtube videos
 
 <br>
 - Download or clone the repository
