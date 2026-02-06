@@ -1,60 +1,90 @@
-"""Language translator application using Deep Translator."""
-from tkinter import Tk, Text, Frame, Button, END, GROOVE, WORD
-from tkinter import ttk, messagebox
+"""Language translator application using Deep Translator and Flask."""
+from flask import Flask, render_template_string, request
 from deep_translator import GoogleTranslator
 from deep_translator.exceptions import TranslationNotFound, ServerException
 
-window = Tk()
-window.title("DataFlair Language Translator")
-window.minsize(600,500)
-window.maxsize(600,500)
+app = Flask(__name__)
 
-def translate():
-    """Translate text from source to target language."""
-    try:
-        txt = text1.get(1.0, END).strip()
-        c2 = combo2.get()
-        if txt:
-            lan_ = language.get(c2)
-            if lan_ is None:
-                messagebox.showerror("Error", "Selected language not found")
-                return
-            translator = GoogleTranslator(source='auto', target=lan_)
-            result = translator.translate(txt)
-            text2.delete(1.0, END)
-            text2.insert(END, result)
-    except (TranslationNotFound, ServerException) as e:
-        messagebox.showerror("Error", f"Translation failed: {str(e)}")
+# HTML Template
+TEMPLATE = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataFlair Language Translator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 800px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">DataFlair Language Translator</h1>
+        <div class="card p-4 shadow-sm">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="language" class="form-label">Target Language</label>
+                    <select class="form-select" id="language" name="language">
+                        <option value="" disabled {% if not selected_lang %}selected{% endif %}>Choose a language</option>
+                        {% for lang in languages %}
+                            <option value="{{ lang }}" {% if lang == selected_lang %}selected{% endif %}>{{ lang }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="source_text" class="form-label">Source Text</label>
+                        <textarea class="form-control" id="source_text" name="source_text" rows="6" placeholder="Enter text...">{{ source_text }}</textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="translated_text" class="form-label">Translated Text</label>
+                        <textarea class="form-control" id="translated_text" rows="6" readonly>{{ translated_text }}</textarea>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-warning btn-lg">Translate</button>
+                </div>
+            </form>
+            {% if error %}
+                <div class="alert alert-danger mt-3">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+"""
 
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    translator = GoogleTranslator()
+    languages_dict = translator.get_supported_languages(as_dict=True)
+    languages = list(languages_dict.keys())
 
+    selected_lang = None
+    source_text = ""
+    translated_text = ""
+    error = None
 
-language = GoogleTranslator().get_supported_languages(as_dict=True)
-lang_value = list(language.keys())
+    if request.method == 'POST':
+        source_text = request.form.get('source_text', '').strip()
+        selected_lang = request.form.get('language')
 
-combo1=ttk.Combobox(window,values=lang_value,state='r')
-combo1.place(x=100,y=20)
-combo1.set("choose a language")
+        if source_text and selected_lang:
+            try:
+                lang_code = languages_dict.get(selected_lang)
+                if lang_code:
+                    translator = GoogleTranslator(source='auto', target=lang_code)
+                    translated_text = translator.translate(source_text)
+                else:
+                    error = "Selected language not found."
+            except (TranslationNotFound, ServerException, Exception) as e:
+                error = f"Translation failed: {str(e)}"
+        elif not selected_lang:
+            error = "Please select a target language."
 
+    return render_template_string(TEMPLATE, languages=languages, selected_lang=selected_lang, source_text=source_text, translated_text=translated_text, error=error)
 
-
-f1=Frame(window,bg='black',bd=4)
-f1.place(x=100,y=100,width=150,height=150)
-
-text1=Text(f1,font="Roboto 14",bg='white',relief=GROOVE,wrap=WORD)
-text1.place(x=0,y=0,width=140,height=140)
-
-combo2=ttk.Combobox(window,values=lang_value,state='r')
-combo2.place(x=300,y=20)
-combo2.set("choose a language")
-
-f2=Frame(window,bg='black',bd=4)
-f2.place(x=300,y=100,width=150,height=150)
-
-text2=Text(f2,font="Roboto 14",bg='white',relief=GROOVE,wrap=WORD)
-text2.place(x=0,y=0,width=140,height=140)
-
-button = Button(window,text='Translate',font=('normal',15), bg='yellow', command=translate)
-button.place(x=230,y=300)# button which when triggered performs translation
-
-
-window.mainloop()
+if __name__ == "__main__":
+    app.run(debug=True)
