@@ -1,0 +1,2 @@
+Flask
+deep-translator
