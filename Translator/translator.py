@@ -79,7 +79,7 @@ def index():
                     translated_text = translator.translate(source_text)
                 else:
                     error = "Selected language not found."
-            except (TranslationNotFound, ServerException, Exception) as e:
+            except (TranslationNotFound, ServerException) as e:
                 error = f"Translation failed: {str(e)}"
         elif not selected_lang:
             error = "Please select a target language."
