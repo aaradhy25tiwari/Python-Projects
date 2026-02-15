@@ -109,17 +109,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Contributing
-
-Contributions are welcome — feel free to open issues or submit pull requests to:
-- improve the UI
-- add caching for API responses
-- add automated tests
-
-Please follow the usual fork → branch → PR workflow.
-
----
-
 ## Author
 
 Created by aaradhy25tiwari. For questions or suggestions, open an issue in the repository.
